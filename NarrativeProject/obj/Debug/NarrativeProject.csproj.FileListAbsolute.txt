@@ -1,0 +1,7 @@
+C:\Users\rawll\Desktop\Codes\Git\NarrativeProject\bin\Debug\NarrativeProject.exe.config
+C:\Users\rawll\Desktop\Codes\Git\NarrativeProject\bin\Debug\NarrativeProject.exe
+C:\Users\rawll\Desktop\Codes\Git\NarrativeProject\bin\Debug\NarrativeProject.pdb
+C:\Users\rawll\Desktop\Codes\Git\NarrativeProject\obj\Debug\NarrativeProject.csproj.AssemblyReference.cache
+C:\Users\rawll\Desktop\Codes\Git\NarrativeProject\obj\Debug\NarrativeProject.csproj.CoreCompileInputs.cache
+C:\Users\rawll\Desktop\Codes\Git\NarrativeProject\obj\Debug\NarrativeProject.exe
+C:\Users\rawll\Desktop\Codes\Git\NarrativeProject\obj\Debug\NarrativeProject.pdb
