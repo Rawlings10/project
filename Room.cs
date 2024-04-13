@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace NarrativeProject
 {
@@ -6,10 +7,24 @@ namespace NarrativeProject
     {
         internal abstract string CreateDescription();
         internal abstract void ReceiveChoice(string choice);
+
+        List<myArtifact> artifacts = new List<myArtifact>();
+
+
+        public static void addArtifact<T1, T2>(T1 items)
+        {
+            string itemString = items.ToString();
+            if (Enum.TryParse<myArtifact>(itemString, out myArtifact destinationItem))
+            {
+                Console.WriteLine("Item Picked.");
+            }
+        }
     }
+
     internal interface IDetails
     {
         void title();
         void Player_Details();
+
     }
 }
