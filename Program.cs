@@ -10,14 +10,18 @@ namespace NarrativeProject
             var game = new Game();
             game.Add(new Start_Page());
             game.Add(new Bedroom());
-            game.Add(new Bathroom());
+            game.Add(new Room2());
             game.Add(new AtticRoom());
+            game.Add(new Lab());
 
             
 
             while (!game.IsGameOver())
             {
                 Console.WriteLine("--");
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"                                                                                                      HP: {Game.HP}");
+                Console.ResetColor();
                 Console.WriteLine(game.CurrentRoomDescription);
                 string choice = Console.ReadLine().ToLower() ?? "";
                 Console.Clear();
