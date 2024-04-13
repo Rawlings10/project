@@ -1,16 +1,29 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace NarrativeProject
 {
-    internal class Game
+    enum gameArtifact
+    {
+        knife,
+        key
+    }
+    enum myArtifact
+    {
+        
+
+    }
+
+    public class Game
     {
         List<Room> rooms = new List<Room>();
         Room currentRoom;
         internal bool IsGameOver() => isFinished;
         static bool isFinished;
         static string nextRoom = "";
-        public static int HP;
+        public static int HP = 100;
         public static string name;
+        static string keycode;
         public static int score;
 
         internal void Add(Room room)
