@@ -2,7 +2,7 @@
 
 namespace NarrativeProject.Rooms
 {
-    internal class Bathroom : Room
+    internal class Room2 : Room
     {
 
         internal override string CreateDescription() =>
