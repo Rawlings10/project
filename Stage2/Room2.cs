@@ -16,7 +16,7 @@ You can return to your [bedroom].
             switch (choice)
             {
                 case "bath":
-                    Console.WriteLine("You relax in the bath.");
+                    Console.WriteLine("You relax in the bath."); Game.Finish();
                     break;
                 case "mirror":
                     Console.WriteLine("You see the numbers 2314 written on the fog on your mirror.");
