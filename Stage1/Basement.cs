@@ -7,12 +7,46 @@ using System.Threading.Tasks;
 
 namespace NarrativeProject.Stage1
 {
-    internal class Basement : Bedroom
+    internal class Basement : Room
     {
-        static void Description()
-        {
-            Console.WriteLine("sgssg");
-        }
+        internal override string CreateDescription() =>
+@"You Entered the basement. 
+it is dark, quiet and cold.
+MAP
+The door forward is locked
+The door backward leads to the bedroom. 
+.
 
+          [forward]
+
+         [backward]
+.";
+        internal override void ReceiveChoice(string choice)
+        {
+            switch (choice)
+            {
+                case "forward":
+                    Console.WriteLine("The Door is look!!!");
+                    Console.WriteLine("What is the keycode???");
+                    string key = Console.ReadLine();
+                    if (key != "salut")
+                    {
+                        Console.WriteLine("The door is locked.");
+                    }
+                    else if (key == "salut")
+                    {
+                        Console.WriteLine("You open the door with the key and leave your bedroom.");
+                        Game.Transition<Room2>();
+                    }
+                    break;
+                case "backward":
+                    Console.WriteLine("You entered the Bedroom");
+                    Game.Transition<Bedroom>();
+                    break;
+                default:
+                    Console.WriteLine("Invalid command.");
+                    break;
+            }
+        }
     }
 }
