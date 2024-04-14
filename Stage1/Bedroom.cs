@@ -2,11 +2,15 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace NarrativeProject.Rooms
 {
-    
+    public void ArtifactMethod(Game gameinstance) 
+    {
+        gameinstance.
+    }
     internal class Bedroom : Room 
     {
         internal override string CreateDescription() =>
@@ -14,6 +18,10 @@ namespace NarrativeProject.Rooms
 And you  are seeing walls of blood and strange objects.
 The room creates a disturbing and gloomy atmosphere of mental desolation. 
 You need to find way out of the room.
+MAP
+The door to forward is the exit
+The door to your left to the basement
+The door to your right to the bathroom
 
           [forward]
      [left]       [right]
@@ -26,18 +34,18 @@ You need to find way out of the room.
             switch (choice)
             {
                 case "forward":
-                    
-                    Console.WriteLine("You moved exit door what is the keycode???");
+                    Console.WriteLine("The Door is locked!!!");
+                    Console.WriteLine("What is the keycode???");
                     string key = Console.ReadLine();
-                    if (key != "boy")
+                    if (key != "bonjour")
                     {
                         Console.WriteLine("The door is locked.");
                     }
-                    else if(key == "boy")
+                    else if(key == "bonjour")
                     {
                         Console.WriteLine("You open the door with the key and leave your bedroom.");
+
                         Game.Transition<Room2>();
-                        Game.Finish();
                     }
                     break;
                 case "left":
@@ -49,7 +57,7 @@ You need to find way out of the room.
                     Game.Transition<Bathroom>();
                     break;
                 case "backward":
-                    Console.WriteLine("You find a [book] and a [knife] on the table");
+                    Console.WriteLine($"You find a [book] and a [{gameArtifact.knife}] on the table");
                     string pickItems = Console.ReadLine();
                     switch (pickItems)
                     {
@@ -57,11 +65,11 @@ You need to find way out of the room.
                             Console.WriteLine("you read the book and the it says, the passward to the door is: bonjour");
                             break;
                         case "knife":
-                            Bedroom.addArtifact<gameArtifact, myArtifact>(gameArtifact.knife);
+                            
+                            addArtifact<gameArtifact, myArtifact>(gameArtifact.knife);
                             Console.WriteLine($"The '{gameArtifact.knife}' has been added to your treasory.");
                             break;
                     }
-                    break;
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
