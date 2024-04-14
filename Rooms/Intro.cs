@@ -46,6 +46,9 @@ Type [rules] for how to play";
                      break;
                 case "rules":
                      Console.WriteLine("this is the rules.............");
+                    break;
+                case "highscore":
+                    break;
                      break;
                 default: 
                      Console.WriteLine("invalid input!!!");
