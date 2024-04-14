@@ -1,4 +1,5 @@
 ﻿using NarrativeProject.Rooms;
+using NarrativeProject.Stage1;
 using System;
 
 namespace NarrativeProject
@@ -10,6 +11,8 @@ namespace NarrativeProject
             var game = new Game();
             game.Add(new Start_Page());
             game.Add(new Bedroom());
+            game.Add(new Bathroom());
+            game.Add(new Basement());
             game.Add(new Room2());
             game.Add(new AtticRoom());
             game.Add(new Lab());
