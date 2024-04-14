@@ -7,11 +7,31 @@ using System.Threading.Tasks;
 
 namespace NarrativeProject.Stage1
 {
-    internal class Bathroom : Bedroom
+    internal class Bathroom : Room
     {
-        static void Description()
+        internal override string CreateDescription() =>
+ @"You are in the bathroom. 
+the showers is down running, with stains of blood filled in the bathtub.
+MAP
+The door backward leads to the bedroom. 
+.
+
+          
+
+         [backward]
+.";
+        internal override void ReceiveChoice(string choice)
         {
-            Console.WriteLine("sgssg");
+            switch (choice)
+            {
+                case "backward":
+                    Console.WriteLine("You entered the Bedroom");
+                    Game.Transition<Bedroom>();
+                    break;
+                default:
+                    Console.WriteLine("Invalid command.");
+                    break;
+            }
         }
     }
 }
