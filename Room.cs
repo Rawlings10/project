@@ -8,9 +8,6 @@ namespace NarrativeProject
         internal abstract string CreateDescription();
         internal abstract void ReceiveChoice(string choice);
 
-        List<myArtifact> artifacts = new List<myArtifact>();
-
-
         public static void addArtifact<T1, T2>(T1 items)
         {
             string itemString = items.ToString();
