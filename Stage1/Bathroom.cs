@@ -20,11 +20,11 @@ The door backward leads to the bedroom.
 
          [backward]
 .";
-        internal override void ReceiveChoice(string choice)
+        internal override void PlayerMove(ConsoleKey key)
         {
-            switch (choice)
+            switch (key)
             {
-                case "backward":
+                case ConsoleKey.DownArrow:
                     Console.WriteLine("You entered the Bedroom");
                     Game.Transition<Bedroom>();
                     break;

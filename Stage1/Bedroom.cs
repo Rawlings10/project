@@ -7,12 +7,10 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace NarrativeProject.Rooms
 {
-    public void ArtifactMethod(Game gameinstance) 
-    {
-        gameinstance.
-    }
     internal class Bedroom : Room 
     {
+        Game artifact = new Game();
+                 
         internal override string CreateDescription() =>
 @"You find yourself in a room. 
 And you  are seeing walls of blood and strange objects.
@@ -23,41 +21,39 @@ The door to forward is the exit
 The door to your left to the basement
 The door to your right to the bathroom
 
-          [forward]
-     [left]       [right]
-         [backward]
 .";
 
 
-        internal override void ReceiveChoice(string choice)
+        internal override void PlayerMove(ConsoleKey key)
         {
-            switch (choice)
+            switch (key)
             {
-                case "forward":
+                case ConsoleKey.UpArrow:
                     Console.WriteLine("The Door is locked!!!");
                     Console.WriteLine("What is the keycode???");
-                    string key = Console.ReadLine();
-                    if (key != "bonjour")
+                    string code = Console.ReadLine();
+                    if (code != "bonjour")
                     {
                         Console.WriteLine("The door is locked.");
                     }
-                    else if(key == "bonjour")
+                    else if(code == "bonjour")
                     {
                         Console.WriteLine("You open the door with the key and leave your bedroom.");
 
-                        Game.Transition<Room2>();
+                        Game.Transition<Corridor>();
                     }
                     break;
-                case "left":
+                case ConsoleKey.LeftArrow:
                     Console.WriteLine("You entered the Basement");
+                    
                     Game.Transition<Basement>();
                     break;
-                case "right":
+                case ConsoleKey.RightArrow:
                     Console.WriteLine("You entered the Bathroom");
                     Game.Transition<Bathroom>();
                     break;
-                case "backward":
-                    Console.WriteLine($"You find a [book] and a [{gameArtifact.knife}] on the table");
+                case ConsoleKey.DownArrow:
+                    Console.WriteLine($"You find a [book] [{gameArtifact.key}]and a [{gameArtifact.knife}] on the table");
                     string pickItems = Console.ReadLine();
                     switch (pickItems)
                     {
@@ -65,9 +61,11 @@ The door to your right to the bathroom
                             Console.WriteLine("you read the book and the it says, the passward to the door is: bonjour");
                             break;
                         case "knife":
+                            artifact.Inventory(gameArtifact.knife);
                             
-                            addArtifact<gameArtifact, myArtifact>(gameArtifact.knife);
-                            Console.WriteLine($"The '{gameArtifact.knife}' has been added to your treasory.");
+                            break;
+                        case "key":
+                            artifact.Inventory(gameArtifact.key);
                             break;
                     }
                     break;

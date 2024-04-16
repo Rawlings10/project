@@ -18,6 +18,7 @@ namespace NarrativeProject
             game.Add(new Door1());
             game.Add(new Door2());
             game.Add(new Door3());
+            game.Add(new Room3());
             game.Add(new AtticRoom());
             game.Add(new Lab());
 
@@ -30,9 +31,8 @@ namespace NarrativeProject
                 Console.WriteLine($"                                                                                                      HP: {Game.HP}");
                 Console.ResetColor();
                 Console.WriteLine(game.CurrentRoomDescription);
-                string choice = Console.ReadLine().ToLower() ?? "";
+                game.ReceiveChoice(Console.ReadKey().Key);
                 Console.Clear();
-                game.ReceiveChoice(choice);
             }
 
             Console.WriteLine("END");

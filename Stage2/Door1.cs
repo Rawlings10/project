@@ -19,11 +19,11 @@ backward to the corridor
          [backward]
 .";
         
-        internal override void ReceiveChoice(string choice)
+        internal override void PlayerMove(ConsoleKey key)
         {
-            switch (choice)
+            switch (key)
             {
-                case "backward":
+                case ConsoleKey.DownArrow:
                     Console.WriteLine("You return to the corridor");
                     Game.Transition<Corridor>();
                     break;

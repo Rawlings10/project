@@ -1,4 +1,5 @@
 ﻿using NarrativeProject.Rooms;
+using NarrativeProject.Stage1;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,36 +11,49 @@ namespace NarrativeProject.Stage2
     internal class Door2 : Room
     {
         internal override string CreateDescription() =>
-@"You Entered the basement. 
-it is dark, quiet and cold.
+@"You Opened the right door. 
+this room has one door straight that takes you to the next stage.
+but note the door is ilusional, it take can you to different places.
+but you have to find you way back and keep trying until you enter the next stage.
 MAP
-The door forward is locked
-The door backward leads to the bedroom. 
-.
-
+go forward
+ 
           [forward]
-
-         [backward]
 .";
-        internal override void ReceiveChoice(string choice)
+        internal override void PlayerMove(ConsoleKey key)
         {
-            switch (choice)
+            switch (key)
             {
-                case "forward":
-                    Console.WriteLine("The Door is look!!!");
-                    Console.WriteLine("What is the keycode???");
-                    string key = Console.ReadLine();
-                    if (key != "salut")
+                case ConsoleKey.UpArrow:
+                    Random ilussion = new Random();
+                    int ilussionalDoor = ilussion.Next(0, 4);
+                    if (ilussionalDoor == 0)
                     {
-                        Console.WriteLine("The door is locked.");
+                        Console.WriteLine("You find yourself in the Basement.");
+                        Game.Transition<Basement>();
                     }
-                    else if (key == "salut")
+                    else if (ilussionalDoor == 1)
                     {
-                        Console.WriteLine("You open the door with the key and leave your bedroom.");
+                        Console.WriteLine("You find yourself in the Bathroom.");
+                        Game.Transition<Bathroom>();
+                    }
+                    else if (ilussionalDoor == 2)
+                    {
+                        Console.WriteLine("You find yourself in the Corridor.");
                         Game.Transition<Corridor>();
                     }
+                    else if (ilussionalDoor == 3)
+                    {
+                        Console.WriteLine("You find yourself in the Corridor.");
+                        Game.Transition<Corridor>();
+                    }
+                    else if (ilussionalDoor == 4)
+                    {
+                        Console.WriteLine("You find yourself in the Corridor.");
+                        Game.Transition<Room3>();
+                    }
                     break;
-                case "backward":
+                case ConsoleKey.DownArrow:
                     Console.WriteLine("You entered the Bedroom");
                     Game.Transition<Bedroom>();
                     break;

@@ -6,10 +6,7 @@ namespace NarrativeProject.Rooms
     internal class Corridor : Room
     {
         private int damage;
-        public Corridor(Game newHP)
-        {
-            damage = newHP.GetHp();   
-        }
+        
         internal override string CreateDescription() =>
 @"You are in a corridor that is having three doors,
 Only one door is the right door, 
@@ -21,24 +18,24 @@ MAP
 [backward] bedroom
 ";
 
-        internal override void ReceiveChoice(string choice)
+        internal override void PlayerMove(ConsoleKey key)
         {
-            switch (choice)
+            switch (key)
             {
-                case "forward":
+                case ConsoleKey.UpArrow:
                     Console.WriteLine("You open the third door.");
                     Game.Transition<Door3>();
                     break;
-                case "left":
+                case ConsoleKey.LeftArrow:
                     Console.WriteLine("You open the second door.");
                     Game.Transition<Door2>();
-                    attack.PlayerDamage(1);
+                    
                     break;
-                case "right":
+                case ConsoleKey.RightArrow:
                     Console.WriteLine("You open the first door");
                     Game.Transition<Door1>();
                     break;
-                case "backward":
+                case ConsoleKey.DownArrow:
                     Console.WriteLine("You return to the bedroom.");
                     Game.Transition<Bedroom>();
                     break;

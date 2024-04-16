@@ -49,9 +49,12 @@
     <Compile Include="Room.cs" />
     <Compile Include="Stage1\Basement.cs" />
     <Compile Include="Stage1\Bathroom.cs" />
+    <Compile Include="Stage2\Door1.cs" />
+    <Compile Include="Stage2\Door2.cs" />
+    <Compile Include="Stage2\Door3.cs" />
     <Compile Include="Stage4\AtticRoom.cs" />
     <Compile Include="Stage5\Lab.cs" />
-    <Compile Include="Stage2\Room2.cs" />
+    <Compile Include="Stage2\Corridor.cs" />
     <Compile Include="Stage1\Bedroom.cs" />
     <Compile Include="Rooms\Intro.cs" />
     <Compile Include="Stage3\Room3.cs" />

@@ -6,7 +6,7 @@ namespace NarrativeProject
     internal abstract class Room
     {
         internal abstract string CreateDescription();
-        internal abstract void ReceiveChoice(string choice);
+        internal abstract void PlayerMove(ConsoleKey key);
 
         public static void addArtifact<T1, T2>(T1 items)
         {

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NarrativeProject.Rooms
 {
-    internal class Start_Page : Room, IDetails
+    internal class Start_Page : Room
     {
         public void title()
         {
@@ -33,23 +33,22 @@ Your goal is to find a way to escape before it's too late.
 
 
 
-Type [start] to proceed to game
-Type [rules] for how to play";
+press [Enter] button to game.
+presss [Tab] how to play";
         
-        internal override void ReceiveChoice(string choice)
+        internal override void PlayerMove(ConsoleKey key)
         {
             
-            switch (choice)
+            switch (key)
             {
-                case "start":
+                case ConsoleKey.Enter:
                      Game.Transition<Bedroom>();
                      break;
-                case "rules":
-                     Console.WriteLine("this is the rules.............");
+                case ConsoleKey.Tab:
+                     Console.WriteLine("Use the directional button for navigation");
+                    Console.WriteLine("When you find object type the name of the object to pick them up");
                     break;
-                case "highscore":
-                    break;
-                     break;
+               
                 default: 
                      Console.WriteLine("invalid input!!!");
                      break;

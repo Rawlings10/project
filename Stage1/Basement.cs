@@ -21,25 +21,25 @@ The door backward leads to the bedroom.
 
          [backward]
 .";
-        internal override void ReceiveChoice(string choice)
+        internal override void PlayerMove(ConsoleKey key)
         {
-            switch (choice)
+            switch (key)
             {
-                case "forward":
+                case ConsoleKey.UpArrow:
                     Console.WriteLine("The Door is look!!!");
                     Console.WriteLine("What is the keycode???");
-                    string key = Console.ReadLine();
-                    if (key != "salut")
+                    string code = Console.ReadLine();
+                    if (code != "salut")
                     {
                         Console.WriteLine("The door is locked.");
                     }
-                    else if (key == "salut")
+                    else if (code == "salut")
                     {
                         Console.WriteLine("You open the door with the key and leave your bedroom.");
-                        Game.Transition<Room2>();
+                        Game.Transition<Corridor>();
                     }
                     break;
-                case "backward":
+                case ConsoleKey.DownArrow:
                     Console.WriteLine("You entered the Bedroom");
                     Game.Transition<Bedroom>();
                     break;

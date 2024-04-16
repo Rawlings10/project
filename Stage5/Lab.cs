@@ -14,7 +14,7 @@ namespace NarrativeProject.Rooms
         {
             throw new NotImplementedException();
         }
-        internal override void ReceiveChoice(string choice)
+        internal override void PlayerMove(ConsoleKey key)
         {
             throw new NotImplementedException();
         }

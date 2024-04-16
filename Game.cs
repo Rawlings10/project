@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Media;
 
 namespace NarrativeProject
 {
-    enum gameArtifact
+    public enum gameArtifact
     {
         knife,
         key
@@ -16,6 +17,18 @@ namespace NarrativeProject
 
     public class Game
     {
+         List<myArtifact> artifacts = new List<myArtifact>();
+        internal void Inventory(gameArtifact artifact) 
+        {
+            artifacts.Add((myArtifact)artifact);
+            Console.WriteLine($"You picked up the {artifact}");
+
+            foreach (string item in Enum.GetNames(typeof(myArtifact)))
+            {
+                Console.WriteLine(item);
+            }
+        }
+        
         List<Room> rooms = new List<Room>();
         Room currentRoom;
         internal bool IsGameOver() => isFinished;
@@ -25,6 +38,23 @@ namespace NarrativeProject
         public static string name;
         static string keycode;
         public static int score;
+          
+        public int GetHp()
+        {
+            return HP;
+        }
+        public void SetHp(int newHP) 
+        {
+            HP = newHP; 
+        }
+        public void PlayerDamage(int damage)
+        {          
+            SetHp(HP - damage);
+            if(HP <= 0)
+            {
+                Game.Finish();
+            }
+        }
 
         internal void Add(Room room)
         {
@@ -37,9 +67,9 @@ namespace NarrativeProject
 
         internal string CurrentRoomDescription => currentRoom.CreateDescription();
 
-        internal void ReceiveChoice(string choice)
+        internal void ReceiveChoice(ConsoleKey key)
         {
-            currentRoom.ReceiveChoice(choice);
+            currentRoom.PlayerMove(key);
             CheckTransition();
         }
 

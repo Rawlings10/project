@@ -12,15 +12,15 @@ A chest is locked with the code [????].
 You can return to your [bedroom].
 ";
 
-        internal override void ReceiveChoice(string choice)
+        internal override void PlayerMove(ConsoleKey key)
         {
-            switch (choice)
+            switch (key)
             {
-                case "bedroom":
+                case ConsoleKey.A:
                     Console.WriteLine("You return to your bedroom.");
                     Game.Transition<Bedroom>();
                     break;
-                case "2314":
+                case ConsoleKey.B:
                     Console.WriteLine("The chest opens and you get a key.");
                     isKeyCollected = true;
                     break;
