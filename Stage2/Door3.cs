@@ -10,7 +10,7 @@ namespace NarrativeProject.Stage2
     internal class Door3 : Room
     {
         internal override string CreateDescription() =>
-$@"{Game.name}, you open the third door. 
+$@"{Game.name}, you entered into a . 
 it is dark, quiet and cold but got attack by scorpion.
 MAP
 The door backward leads to the corridor. 
