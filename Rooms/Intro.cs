@@ -12,10 +12,16 @@ namespace NarrativeProject.Rooms
         public void title()
         {
             Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("                        THE HUNTED MAISON                      ");
-            Console.ResetColor();
             Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine("                        THE HUNTED MAISON                     ");
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("press any key to continue!!!");
+            Console.ResetColor();
             Console.ReadKey();
             Console.Beep();
             Console.Clear();
@@ -24,16 +30,23 @@ namespace NarrativeProject.Rooms
         {
             Console.WriteLine("Please Enter your name to start Game.");
             Game.name = Console.ReadLine();
-            Console.WriteLine($"Welcome {Game.name} press");
+            Console.Clear();
+            Console.WriteLine($"Welcome {Game.name}");
+            Console.ForegroundColor= ConsoleColor.Green;
+            Console.WriteLine("press any key to start");
+            Console.ReadKey();
+            Console.Beep();
+            Console.Clear();
         }
         internal override string CreateDescription() =>
-        @"You wake up in a mysterious mansion with no memory of how you got there.
+        $@"INTRO:
+{Game.name}, You wake up in a mysterious mansion with no memory of how you got there.
 As you explore, you realize the mansion is haunted.
 Your goal is to find a way to escape before it's too late.
 
 
 
-press [Enter] button to game.
+press [Enter] button to Proceed.
 presss [Tab] how to play";
         
         internal override void PlayerMove(ConsoleKey key)
@@ -42,16 +55,22 @@ presss [Tab] how to play";
             switch (key)
             {
                 case ConsoleKey.Enter:
-                     Game.Transition<Bedroom>();
-                     break;
+                    Game.Transition<Corridor>();
+                    break;
                 case ConsoleKey.Tab:
-                     Console.WriteLine("Use the directional button for navigation");
+                    Console.WriteLine("Use the directional button for navigation to four courners of your location");
                     Console.WriteLine("When you find object type the name of the object to pick them up");
+                    Console.WriteLine("when you see [map] it only shows the current exit point of your location");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.ForegroundColor= ConsoleColor.Red;
+                    Console.WriteLine("Press any ESC key when you are done");
+                    Console.ReadKey();
                     break;
                
                 default: 
-                     Console.WriteLine("invalid input!!!");
-                     break;
+                    Console.WriteLine("invalid input!!!");
+                    break;
             }
             
         }

@@ -10,7 +10,7 @@ namespace NarrativeProject.Stage1
     internal class Bathroom : Room
     {
         internal override string CreateDescription() =>
- @"You are in the bathroom. 
+ $@"{Game.name}, you are in the bathroom. 
 the showers is down running, with stains of blood filled in the bathtub.
 MAP
 The door backward leads to the bedroom. 
@@ -27,6 +27,10 @@ The door backward leads to the bedroom.
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You entered the Bedroom");
                     Game.Transition<Bedroom>();
+                    break;
+                case ConsoleKey.RightArrow:
+                    Console.WriteLine($"{Game.name}, Nothing found");
+                    Game.Transition<Bathroom>();
                     break;
                 default:
                     Console.WriteLine("Invalid command.");

@@ -25,6 +25,7 @@ MAP
                 case ConsoleKey.UpArrow:
                     Console.WriteLine("You open the third door.");
                     Game.Transition<Door3>();
+                    Game.PlayerDamage(15);
                     break;
                 case ConsoleKey.LeftArrow:
                     Console.WriteLine("You open the second door.");
@@ -33,6 +34,7 @@ MAP
                     break;
                 case ConsoleKey.RightArrow:
                     Console.WriteLine("You open the first door");
+                    Game.PlayerDamage(10);
                     Game.Transition<Door1>();
                     break;
                 case ConsoleKey.DownArrow:

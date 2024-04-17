@@ -10,14 +10,11 @@ namespace NarrativeProject.Stage2
     internal class Door3 : Room
     {
         internal override string CreateDescription() =>
-@"You Entered the basement. 
-it is dark, quiet and cold.
+$@"{Game.name}, you open the third door. 
+it is dark, quiet and cold but got attack by scorpion.
 MAP
-The door forward is locked
-The door backward leads to the bedroom. 
+The door backward leads to the corridor. 
 .
-
-          [forward]
 
          [backward]
 .";
@@ -25,23 +22,9 @@ The door backward leads to the bedroom.
         {
             switch (key)
             {
-                case ConsoleKey.UpArrow:
-                    Console.WriteLine("The Door is look!!!");
-                    Console.WriteLine("What is the keycode???");
-                    string code = Console.ReadLine();
-                    if (code != "salut")
-                    {
-                        Console.WriteLine("The door is locked.");
-                    }
-                    else if (code == "salut")
-                    {
-                        Console.WriteLine("You open the door with the key and leave your bedroom.");
-                        Game.Transition<Corridor>();
-                    }
-                    break;
                 case ConsoleKey.DownArrow:
-                    Console.WriteLine("You entered the Bedroom");
-                    Game.Transition<Bedroom>();
+                    Console.WriteLine("Back to the corridor");
+                    Game.Transition<Corridor>();
                     break;
                 default:
                     Console.WriteLine("Invalid command.");

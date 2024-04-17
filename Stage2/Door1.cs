@@ -10,16 +10,16 @@ namespace NarrativeProject.Stage2
     internal class Door1 : Room
     {
         internal override string CreateDescription() =>
-@"You Entered the first door. 
-you entered a desert and got beaten by a snake.
-you need to kill the snake!!!!
+$@"{Game.name}, you Entered the first door. 
+you happen to appear in a desert and got beaten by a snake.
+
 MAP
 backward to the corridor
         
          [backward]
 .";
-        
-        internal override void PlayerMove(ConsoleKey key)
+       
+    internal override void PlayerMove(ConsoleKey key)
         {
             switch (key)
             {

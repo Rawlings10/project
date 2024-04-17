@@ -10,7 +10,10 @@ namespace NarrativeProject
         static void Main(string[] args)
         {
             var game = new Game();
-            game.Add(new Start_Page());
+            Start_Page intro = new Start_Page();
+            intro.title();
+            intro.Player_Details();
+            game.Add(intro);      
             game.Add(new Bedroom());
             game.Add(new Bathroom());
             game.Add(new Basement());

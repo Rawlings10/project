@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Timers;
+using System.ComponentModel;
 using System.Media;
 
 namespace NarrativeProject
@@ -9,21 +11,18 @@ namespace NarrativeProject
         knife,
         key
     }
-    enum myArtifact
-    {
-        
-
-    }
+    
 
     public class Game
     {
-         List<myArtifact> artifacts = new List<myArtifact>();
-        internal void Inventory(gameArtifact artifact) 
+        static List<gameArtifact> artifacts = new List<gameArtifact>();
+        
+        internal static void Inventory(gameArtifact artifact) 
         {
-            artifacts.Add((myArtifact)artifact);
+            artifacts.Add(artifact);
             Console.WriteLine($"You picked up the {artifact}");
 
-            foreach (string item in Enum.GetNames(typeof(myArtifact)))
+            foreach(gameArtifact item in artifacts) 
             {
                 Console.WriteLine(item);
             }
@@ -39,21 +38,29 @@ namespace NarrativeProject
         static string keycode;
         public static int score;
           
-        public int GetHp()
+        public static int GetHp()
         {
             return HP;
         }
-        public void SetHp(int newHP) 
+        public static void SetHp(int newHP) 
         {
             HP = newHP; 
         }
-        public void PlayerDamage(int damage)
+        public static void PlayerDamage(int damage)
         {          
             SetHp(HP - damage);
-            if(HP <= 0)
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"You took a damage of: {damage}");
+            if (HP <= 0)
             {
                 Game.Finish();
             }
+        }
+
+        public static void SetTimer(int miliseconds) 
+        {
+            Timer timer = null;
+            timer = new Timer(miliseconds);
         }
 
         internal void Add(Room room)
@@ -66,6 +73,7 @@ namespace NarrativeProject
         }
 
         internal string CurrentRoomDescription => currentRoom.CreateDescription();
+        
 
         internal void ReceiveChoice(ConsoleKey key)
         {

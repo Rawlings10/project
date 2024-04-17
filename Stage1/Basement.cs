@@ -10,7 +10,7 @@ namespace NarrativeProject.Stage1
     internal class Basement : Room
     {
         internal override string CreateDescription() =>
-@"You Entered the basement. 
+$@"{Game.name}, you Entered the basement. 
 it is dark, quiet and cold.
 MAP
 The door forward is locked

@@ -26,7 +26,7 @@ go forward
             {
                 case ConsoleKey.UpArrow:
                     Random ilussion = new Random();
-                    int ilussionalDoor = ilussion.Next(0, 4);
+                    int ilussionalDoor = ilussion.Next(0, 5);
                     if (ilussionalDoor == 0)
                     {
                         Console.WriteLine("You find yourself in the Basement.");
@@ -45,7 +45,7 @@ go forward
                     else if (ilussionalDoor == 3)
                     {
                         Console.WriteLine("You find yourself in the Corridor.");
-                        Game.Transition<Corridor>();
+                        Game.Transition<Door2>();
                     }
                     else if (ilussionalDoor == 4)
                     {
