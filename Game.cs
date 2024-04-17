@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Timers;
 using System.ComponentModel;
 using System.Media;
+using System.Security.Policy;
 
 namespace NarrativeProject
 {
@@ -35,8 +36,8 @@ namespace NarrativeProject
         static string nextRoom = "";
         public static int HP = 100;
         public static string name;
-        static string keycode;
         public static int score;
+        public static Timer timer;
           
         public static int GetHp()
         {
@@ -59,8 +60,9 @@ namespace NarrativeProject
 
         public static void SetTimer(int miliseconds) 
         {
-            Timer timer = null;
             timer = new Timer(miliseconds);
+            timer.Start();
+            
         }
 
         internal void Add(Room room)

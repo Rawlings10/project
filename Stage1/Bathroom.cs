@@ -30,6 +30,7 @@ The door backward leads to the bedroom.
                     break;
                 case ConsoleKey.RightArrow:
                     Console.WriteLine($"{Game.name}, Nothing found");
+                    Game.SetTimer(10000);
                     Game.Transition<Bathroom>();
                     break;
                 default:

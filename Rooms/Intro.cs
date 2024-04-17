@@ -55,7 +55,7 @@ presss [Tab] how to play";
             switch (key)
             {
                 case ConsoleKey.Enter:
-                    Game.Transition<Corridor>();
+                    Game.Transition<Bedroom>();
                     break;
                 case ConsoleKey.Tab:
                     Console.WriteLine("Use the directional button for navigation to four courners of your location");
