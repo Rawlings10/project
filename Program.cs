@@ -31,7 +31,9 @@ namespace NarrativeProject
             {
                 Console.WriteLine("--");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"                                                                                                      HP: {Game.HP}");
+                Console.WriteLine($"                                                                                                 Player: {Game.name}");
+                Console.WriteLine($"                                                                                                     HP: {Game.PlayerHP}");
+                Console.WriteLine($"                                                                                                 Weapon: {Game.Ammunation}");
                 Console.ResetColor();
                 Console.WriteLine(game.CurrentRoomDescription);
                 game.ReceiveChoice(Console.ReadKey().Key);
