@@ -14,9 +14,6 @@ namespace NarrativeProject.Stage1
 the showers is down running, with stains of blood filled in the bathtub.
 MAP
 The door backward leads to the bedroom. 
-.
-
-          
 
          [backward]
 .";
@@ -30,7 +27,6 @@ The door backward leads to the bedroom.
                     break;
                 case ConsoleKey.RightArrow:
                     Console.WriteLine($"{Game.name}, Nothing found");
-                    Game.SetTimer(10000);
                     Game.Transition<Bathroom>();
                     break;
                 default:
