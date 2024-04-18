@@ -12,15 +12,12 @@ namespace NarrativeProject.Rooms
         Game artifact = new Game();
                  
         internal override string CreateDescription() =>
-$@"{Game.name}, You find yourself in a room. 
-And you  are seeing walls of blood and strange objects.
-The room creates a disturbing and gloomy atmosphere of mental desolation. 
-You need to find way out of the room.
+$@"{Game.name}, You are in a Bedroom   [Stage 1]
+
 MAP
 The door to forward is the exit
 The door to your left to the basement
 The door to your right to the bathroom
-
 .";
 
 
@@ -45,11 +42,11 @@ The door to your right to the bathroom
                     break;
                 case ConsoleKey.LeftArrow:
                     Console.WriteLine($"{Game.name}, you entered the Basement");
-                    
                     Game.Transition<Basement>();
                     break;
                 case ConsoleKey.RightArrow:
-                    Console.WriteLine($"{Game.name}, you entered the Bathroom");
+                    Console.WriteLine($"{Game.name}, you entered the Bathroom, you meet and enemy");
+                    Game.AmmunationHP(10);
                     Game.Transition<Bathroom>();
                     break;
                 case ConsoleKey.DownArrow:
@@ -61,13 +58,16 @@ The door to your right to the bathroom
                             Console.WriteLine("you read the book and the it says, the passward to the door is: bonjour");
                             break;
                         case "knife":
-                            Game.Inventory(gameArtifact.knife);
+                            Game.AddtoInventory(gameArtifact.knife);
                             
                             break;
                         case "key":
-                            Game.Inventory(gameArtifact.key);
+                            Game.AddtoInventory(gameArtifact.key);
                             break;
                     }
+                    break;
+                case ConsoleKey.Tab:
+                    Game.CheckInventory();
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
