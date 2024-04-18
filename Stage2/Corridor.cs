@@ -41,6 +41,9 @@ MAP
                     Console.WriteLine("You return to the bedroom.");
                     Game.Transition<Bedroom>();
                     break;
+                case ConsoleKey.Tab:
+                    Game.CheckInventory();
+                    break;
                 default:
                     Console.WriteLine("Invalid command.");
                     break;
