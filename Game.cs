@@ -10,7 +10,7 @@ namespace NarrativeProject
 {
     public enum gameArtifact
     {
-        knife,
+        gun,
         key,
     }
 
@@ -27,7 +27,11 @@ namespace NarrativeProject
         {
             Inventory.Add(item);
             Console.WriteLine($"{item} added to found items");
-            SetTimer(1000);
+            if(item == gameArtifact.gun)
+            {
+                SetAmmunation(Ammunation + 20);
+            }
+            SetTimer(2000);
         }
         public static void CheckInventory()
         {
@@ -83,7 +87,8 @@ namespace NarrativeProject
         }
         public static void AmmunationHP(int bullet)
         {
-            Ammunation += bullet;
+            
+            SetAmmunation( Ammunation + bullet);
         }
 
         public static int GetAmor()
@@ -96,12 +101,14 @@ namespace NarrativeProject
         }
         public static void PlayerAttack()
         {
-            Console.WriteLine("Attack the Enemy");
             if (Ammunation > 0)
             {
-                Ammunation--;
+                Ammunation -= PlayerAttackDamage;
                 enermyHp -= PlayerAttackDamage;
-                Console.WriteLine("Good Attack");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("BOOM!!!");
+                Console.WriteLine($"   damage -{PlayerAttackDamage}                                                                                          Enemy Hp:{enermyHp}");
+                Console.ResetColor();
             }
             else if (Ammunation <= 0)
             {           
@@ -110,29 +117,49 @@ namespace NarrativeProject
         }
         public static void EnemyAttack()
         {
-            if (isAmorUsed == true)
-            {
-                PlayerHP -= 0;
-                Console.WriteLine("No damage collected");
-            }
-            else
-            {
-                PlayerHP -= enemyAttackDamage;
-                Console.WriteLine($"Enemy Attacted, HP: {PlayerHP}");
-            }
+            Console.WriteLine("Enermy turn");
+            SetTimer(500);
+            PlayerHP -= enemyAttackDamage;
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("VOOOOOOOOO!!!!");
+            Console.WriteLine($"Enemy Attacked, PlayerHP: -{enemyAttackDamage}");
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine($"   damage -{enemyAttackDamage}                                                                                          Player Hp:{PlayerHP}");
+            Console.WriteLine($"                                                                                                       Ammuntion:{Ammunation}");
+            Console.ResetColor();
         }
         public static void FightScene()
         {
-            while(PlayerHP > 0 && enermyHp > 0 );
-            if (playerTurn)
-            {
-                Console.WriteLine($"{Game.name}'s, turn");
-                PlayerAttack();
-            }
-            else
-            {
-                Console.WriteLine("Enemy's turn");
-                EnemyAttack();
+            ConsoleKey key;
+            Console.WriteLine("Enermy Spotted!!!");
+            while (PlayerHP > 0 && enermyHp > 0)
+            {                
+                Console.WriteLine("Press A to Shot enemy");
+                key = Console.ReadKey().Key;
+                Console.Clear();
+                switch (key)
+                {
+                    case ConsoleKey.A:
+                        PlayerAttack();
+                        SetTimer(1000);
+                        EnemyAttack();
+                        break;
+                }
+                if(PlayerHP <= 0)
+                {
+                    Console.Clear();
+                    Console.WriteLine("Opps!!! Eliminated");
+                    SetTimer(5000);
+                    Game.Finish();
+                }
+                else if(enermyHp <= 0)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Enemy Defeated");
+                    Console.ResetColor();
+                    SetTimer(1000);
+                }
+
             }
         }
         public static void SetTimer(int time)
