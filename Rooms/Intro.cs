@@ -28,12 +28,13 @@ namespace NarrativeProject.Rooms
         }
         public void Player_Details()
         {
-            Console.WriteLine("Please Enter your name to start Game.");
+            Console.WriteLine("Please Enter your name to start game.");
             Game.name = Console.ReadLine();
             Console.Clear();
             Console.WriteLine($"Welcome {Game.name}");
             Console.ForegroundColor= ConsoleColor.Green;
-            Console.WriteLine("press any key to start");
+            Console.WriteLine();
+            Console.WriteLine("                             press any key to start");
             Console.ReadKey();
             Console.Beep();
             Console.Clear();
@@ -41,10 +42,10 @@ namespace NarrativeProject.Rooms
         internal override string CreateDescription() =>
         $@"INTRO:
 {Game.name}, You wake up in a mysterious mansion with no memory of how you got there.
-As you explore, you realize the mansion is haunted.
-Your goal is to find a way to escape before it's too late.
+As you explore, you realize the mansion is haunted with Monster.
+Your goal is to find a way to escape the hunted and escape the Monster..
 
-
+GOODLUCK!!!
 
 press [Enter] button to Proceed.
 presss [Tab] how to play";
