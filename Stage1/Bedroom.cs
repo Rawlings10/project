@@ -12,13 +12,12 @@ namespace NarrativeProject.Rooms
         Game artifact = new Game();
                  
         internal override string CreateDescription() =>
-$@"{Game.name}, You are in a Bedroom   [Stage 1]
+$@"{Game.name}, You are in a Bedroom    [STAGE 1]
 
 MAP
 The door to forward is the exit
 The door to your left to the basement
-The door to your right to the bathroom
-.";
+The door to your right to the bathroom.";
 
 
         internal override void PlayerMove(ConsoleKey key)
@@ -45,21 +44,21 @@ The door to your right to the bathroom
                     Game.Transition<Basement>();
                     break;
                 case ConsoleKey.RightArrow:
-                    Console.WriteLine($"{Game.name}, you entered the Bathroom, you meet and enemy");
-                    Game.AmmunationHP(10);
+                    Console.WriteLine($"{Game.name}, you entered the Bathroom.");
+                    Game.FightScene();
                     Game.Transition<Bathroom>();
                     break;
                 case ConsoleKey.DownArrow:
-                    Console.WriteLine($"{Game.name}, you find a [book] [{gameArtifact.key}] and a [{gameArtifact.knife}] on the table");
+                    Console.WriteLine($"{Game.name}, you find a [book] [{gameArtifact.key}] and a [{gameArtifact.gun}] on the table");
                     string pickItems = Console.ReadLine();
                     switch (pickItems)
                     {
                         case "book":
                             Console.WriteLine("you read the book and the it says, the passward to the door is: bonjour");
                             break;
-                        case "knife":
-                            Game.AddtoInventory(gameArtifact.knife);
-                            
+                        case "gun":
+                            Console.WriteLine($"{Game.name}, you can use the item for self defence againt enermies");
+                            Game.AddtoInventory(gameArtifact.gun);
                             break;
                         case "key":
                             Game.AddtoInventory(gameArtifact.key);
@@ -68,6 +67,7 @@ The door to your right to the bathroom
                     break;
                 case ConsoleKey.Tab:
                     Game.CheckInventory();
+                    Game.SetTimer(1000);
                     break;
                 default:
                     Console.WriteLine("Invalid command.");

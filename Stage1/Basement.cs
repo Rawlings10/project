@@ -10,17 +10,14 @@ namespace NarrativeProject.Stage1
     internal class Basement : Room
     {
         internal override string CreateDescription() =>
-$@"{Game.name}, you Entered the basement. 
-it is dark, quiet and cold.
+$@"{Game.name}, you Entered the basement    [STAGE 1]. 
+The basement if full of stuff, be carefull of your direction, enermy might be around
+
 MAP
-The door forward is locked
-The door backward leads to the bedroom. 
-.
+The door forward is locked find the key
+The door backward leads to the bedroom.";
 
-          [forward]
 
-         [backward]
-.";
         internal override void PlayerMove(ConsoleKey key)
         {
             switch (key)
@@ -32,6 +29,7 @@ The door backward leads to the bedroom.
                     if (code != "salut")
                     {
                         Console.WriteLine("The door is locked.");
+                        Game.SetTimer(1000);
                     }
                     else if (code == "salut")
                     {
@@ -42,6 +40,21 @@ The door backward leads to the bedroom.
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You entered the Bedroom");
                     Game.Transition<Bedroom>();
+                    break;
+                case ConsoleKey.RightArrow:
+                    Game.FightScene();
+                    Console.WriteLine($"{Game.name}, Nothing found");
+                    Game.SetTimer(500);
+                    Game.Transition<Basement>();
+                    break;
+                case ConsoleKey.LeftArrow:
+                    Console.WriteLine($"{Game.name}, Nothing found");
+                    Game.SetTimer(500);
+                    Game.Transition<Basement>();
+                    break;
+                case ConsoleKey.Tab:
+                    Game.CheckInventory();
+                    Game.SetTimer(1000);
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
