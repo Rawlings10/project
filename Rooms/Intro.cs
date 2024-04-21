@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NarrativeProject.Stage2;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -45,6 +46,7 @@ namespace NarrativeProject.Rooms
 As you explore, you realize the mansion is haunted with Monster.
 Your goal is to find a way to escape the hunted and escape the Monster..
 
+First of all find a [weapon] around you for your safety. 
 GOODLUCK!!!
 
 press [Enter] button to Proceed.

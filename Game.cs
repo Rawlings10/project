@@ -12,6 +12,7 @@ namespace NarrativeProject
     {
         gun,
         key,
+        gold
     }
 
     public class Game
@@ -51,10 +52,10 @@ namespace NarrativeProject
         public static int PlayerHP = 100;
         public static string name;
         public static int amorPower = 3;
-        public static int Ammunation = 20;
+        public static int Ammunation;
         public static int enermyHp = 15;
-        internal static int enemyAttackDamage = 5; 
-        public static int PlayerAttackDamage = 5;
+        internal static int enemyAttackDamage; 
+        public static int PlayerAttackDamage;
         public static bool playerTurn = true;
         public static bool isAmorUsed;
           
@@ -66,17 +67,7 @@ namespace NarrativeProject
         {
             PlayerHP = newHP; 
         }
-        public static void PlayerDamage(int damage)
-        {
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine($"You took a damage of: {damage}");
-            Game.SetTimer(1000);
-            SetHp(PlayerHP - damage);
-            if (PlayerHP <= 0)
-            {
-                Game.Finish();
-            }
-        }
+
         public static int GetAmmunation() 
         {
             return Ammunation;
@@ -85,10 +76,9 @@ namespace NarrativeProject
         {
             Ammunation = amunation;
         }
-        public static void AmmunationHP(int bullet)
-        {
-            
-            SetAmmunation( Ammunation + bullet);
+        public static void AmmunationHP()
+        {           
+            SetAmmunation(Ammunation + 20);
         }
 
         public static int GetAmor()
@@ -103,12 +93,36 @@ namespace NarrativeProject
         {
             if (Ammunation > 0)
             {
-                Ammunation -= PlayerAttackDamage;
+                Random hit = new Random();
+                PlayerAttackDamage = hit.Next(2, 9); 
+                Ammunation -= 3;
                 enermyHp -= PlayerAttackDamage;
                 Console.ForegroundColor = ConsoleColor.Red;
+                if (enermyHp < 0)
+                {
+                    enermyHp = 0;
+                }
                 Console.WriteLine("BOOM!!!");
                 Console.WriteLine($"   damage -{PlayerAttackDamage}                                                                                          Enemy Hp:{enermyHp}");
                 Console.ResetColor();
+                if(PlayerAttackDamage > 6)
+                {
+                    Console.ForegroundColor = ConsoleColor.Blue;
+                    Console.WriteLine("Perfect Shot");
+                    Console.ResetColor();
+                }
+                else if(PlayerAttackDamage > 3)
+                {
+                    Console.ForegroundColor = ConsoleColor.Green;
+                    Console.WriteLine("Good shot, try aiming better");
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("Poor Target!!!");
+                    Console.ResetColor();
+                }
             }
             else if (Ammunation <= 0)
             {           
@@ -117,6 +131,8 @@ namespace NarrativeProject
         }
         public static void EnemyAttack()
         {
+            Random hit = new Random();
+            enemyAttackDamage = hit.Next(4, 10);
             Console.WriteLine("Enermy turn");
             SetTimer(500);
             PlayerHP -= enemyAttackDamage;
@@ -162,9 +178,27 @@ namespace NarrativeProject
 
             }
         }
+        public static void EmptySpace()
+        {
+            Console.WriteLine($"{Game.name}, Nothing found here");
+            Game.SetTimer(500);
+        }
         public static void SetTimer(int time)
         {
             Thread.Sleep(time);
+        }
+
+        public static void HealthKit()
+        {
+            Console.ForegroundColor= ConsoleColor.Green;
+            Console.WriteLine("Health Supplies Found +++");
+            SetHp(PlayerHP + 25);
+            Console.ResetColor();
+            SetTimer(500);
+            if (PlayerHP > 100)
+            {
+                SetHp(PlayerHP = 100);  
+            }
         }
 
         internal void Add(Room room)
