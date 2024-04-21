@@ -26,8 +26,12 @@ namespace NarrativeProject
 
         public static void AddtoInventory(gameArtifact item) 
         {
+            Console.WriteLine();
             Inventory.Add(item);
-            Console.WriteLine($"{item} added to found items");
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("New Item Found");
+            Console.WriteLine($"[{item}] added to found items");
+            Console.ResetColor();
             if(item == gameArtifact.gun)
             {
                 SetAmmunation(Ammunation + 20);

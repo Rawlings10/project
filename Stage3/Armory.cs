@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NarrativeProject.Rooms
 {
-    internal class Room3 : Room 
+    internal class Armory : Room 
     {
         internal override string CreateDescription() =>
 @"You Entered the first door. 

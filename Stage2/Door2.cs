@@ -40,7 +40,7 @@ Backward leads back to the corridor.";
                     else if (ilussionalDoor == 3)
                     {
                         Console.WriteLine("You passed the Portal.");
-                        Game.Transition<Room3>();
+                        Game.Transition<Armory>();
                     }
                     break;
                 case ConsoleKey.RightArrow:
