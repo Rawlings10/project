@@ -10,22 +10,33 @@ namespace NarrativeProject.Stage2
     internal class Door1 : Room
     {
         internal override string CreateDescription() =>
-$@"{Game.name}, you Entered the first door. 
-you happen to appear in a desert and got beaten by a snake.
+$@"{Game.name}, you Entered the first door.     [STAGE 2]
 
 MAP
-backward to the corridor
-        
-         [backward]
-.";
+backward leads back to the corridor.";
        
     internal override void PlayerMove(ConsoleKey key)
         {
             switch (key)
             {
+                case ConsoleKey.UpArrow:
+                    Game.FightScene();
+                    Game.EmptySpace();
+                    break;
+                case ConsoleKey.RightArrow:
+                    Game.EmptySpace();
+                    break;
+                case ConsoleKey.LeftArrow:
+                    Game.FightScene();  
+                    Game.EmptySpace();
+                    break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You return to the corridor");
                     Game.Transition<Corridor>();
+                    break;
+                case ConsoleKey.Tab:
+                    Game.CheckInventory();
+                    Game.SetTimer(1000);
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
