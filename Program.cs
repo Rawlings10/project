@@ -2,6 +2,7 @@
 using NarrativeProject.Stage1;
 using NarrativeProject.Stage2;
 using NarrativeProject.Stage3;
+using NarrativeProject.Stage4;
 using System;
 
 namespace NarrativeProject
@@ -26,6 +27,7 @@ namespace NarrativeProject
             game.Add(new StoreHouse());
             game.Add(new Garage());
             game.Add(new Lab());
+            game.Add(new Libary());
             game.Add(new EndGame());
             
 

@@ -20,6 +20,8 @@ go left for libary.";
             {
                 case ConsoleKey.UpArrow:
                     Game.MutlipleFightScene(3);
+                    Game.AddtoInventory(gameArtifact.silver);
+                    Game.AmmunationHP();
                     break;
                 case ConsoleKey.LeftArrow:
                     Game.MutlipleFightScene(2);

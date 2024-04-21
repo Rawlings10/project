@@ -54,7 +54,14 @@ The door to your right to the bathroom.";
                     switch (pickItems)
                     {
                         case "book":
-                            Console.WriteLine("you read the book and the it says, the passward to the door is: bonjour");
+                            Console.WriteLine("you read the book and the it says");
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine("The Passward to the door is 'bonjour' \nThe passward to the basement door is 'salut' ");
+                            Console.WriteLine();
+                            Console.WriteLine();
+                            Console.WriteLine("Any any key to close the book.........");
+                            Console.ReadKey();
                             break;
                         case "gun":
                             Console.WriteLine($"{Game.name}, you can use the item for self defence againt enermies");

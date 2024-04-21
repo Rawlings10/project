@@ -12,7 +12,8 @@ namespace NarrativeProject
     {
         gun,
         key,
-        gold
+        gold,
+        silver
     }
 
     public class Game

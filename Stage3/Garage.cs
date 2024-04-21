@@ -22,8 +22,8 @@ go forward next room.";
             {
                 case ConsoleKey.UpArrow:
                     Game.MutlipleFightScene(2);
-                    //Console.WriteLine("You entered the Garage");
-                    //Game.Transition<StoreHouse>();
+                    Console.WriteLine("You entered the Lab");
+                    Game.Transition<Lab>();
                     break;
                 case ConsoleKey.LeftArrow:
                     Game.AmmunationHP();
