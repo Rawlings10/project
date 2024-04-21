@@ -1,40 +1,37 @@
-﻿using NarrativeProject.Rooms;
-using NarrativeProject.Stage2;
+﻿using NarrativeProject.Stage4;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace NarrativeProject.Stage3
+namespace NarrativeProject.Rooms
 {
-    internal class Garage : Room
+    internal class Lab : Room
     {
+        internal static bool isKeyCollected;
+
         internal override string CreateDescription() =>
-$@"{Game.name}, You are in a Garage   [STAGE 3] 
+$@"{Game.name}, You are in a Lab    [STAGE 4] 
 
 MAP
-go forward next room.";
+go left for libary.";
+
 
         internal override void PlayerMove(ConsoleKey key)
         {
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    Game.MutlipleFightScene(2);
-                    //Console.WriteLine("You entered the Garage");
-                    //Game.Transition<StoreHouse>();
+                    Game.MutlipleFightScene(3);
                     break;
                 case ConsoleKey.LeftArrow:
-                    Game.AmmunationHP();
-                    Game.HealthKit();
+                    Game.MutlipleFightScene(2);
                     break;
                 case ConsoleKey.RightArrow:
                     Game.MutlipleFightScene(2);
+                    Console.WriteLine("You entered the Libary");
+                    Game.Transition<Libary>();
                     break;
                 case ConsoleKey.DownArrow:
-                    Console.WriteLine("You return to the Store House");
-                    Game.Transition<StoreHouse>();
+                    Console.WriteLine("You back to the Garage");
+                    Game.Transition<Libary>();
                     break;
                 case ConsoleKey.Tab:
                     Game.CheckInventory();

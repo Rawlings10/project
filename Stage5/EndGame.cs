@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace NarrativeProject.Rooms
 {
-    internal class Lab : Room
+    internal class EndGame : Room
     {
-        public Lab() { }
+        public EndGame() { }
 
         internal override string CreateDescription()
         {

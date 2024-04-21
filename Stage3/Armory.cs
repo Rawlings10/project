@@ -1,4 +1,6 @@
-﻿using System;
+﻿using NarrativeProject.Stage2;
+using NarrativeProject.Stage3;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,29 +11,40 @@ namespace NarrativeProject.Rooms
     internal class Armory : Room 
     {
         internal override string CreateDescription() =>
-@"You Entered the first door. 
-you entered a desert and got beaten by a snake.
-you need to kill the snake!!!!
+$@"{Game.name}, You are in a Armory    [STAGE 3] 
+
 MAP
-backward to the corridor
-        
-         [backward]
-.";
+go forward next room.";
 
         internal override void PlayerMove(ConsoleKey key)
         {
             switch (key)
             {
+                case ConsoleKey.UpArrow:
+                    Console.WriteLine("You entered the Store House");
+                    Game.Transition<StoreHouse>();
+                    break;
+                case ConsoleKey.LeftArrow:
+                    Game.AmmunationHP();
+                    Game.SetTimer(500);
+                    Game.HealthKit();
+                    break; 
+                case ConsoleKey.RightArrow:
+                    Game.FightScene();
+                    Game.AmmunationHP();
+                    break;
                 case ConsoleKey.DownArrow:
-                    Console.WriteLine("You return to the corridor");
-                    Game.Transition<Corridor>();
+                    Console.WriteLine("You return to the ilusional door");
+                    Game.Transition<Door2>();
+                    break;
+                case ConsoleKey.Tab:
+                    Game.CheckInventory();
+                    Game.SetTimer(1000);
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
                     break;
             }
         }
-
-
     }
 }

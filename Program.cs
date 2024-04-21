@@ -1,6 +1,7 @@
 ﻿using NarrativeProject.Rooms;
 using NarrativeProject.Stage1;
 using NarrativeProject.Stage2;
+using NarrativeProject.Stage3;
 using System;
 
 namespace NarrativeProject
@@ -21,9 +22,12 @@ namespace NarrativeProject
             game.Add(new Door1());
             game.Add(new Door2());
             game.Add(new Door3());
-            game.Add(new Room3());
-            game.Add(new AtticRoom());
+            game.Add(new Armory());
+            game.Add(new StoreHouse());
+            game.Add(new Garage());
             game.Add(new Lab());
+            game.Add(new EndGame());
+            
 
             
 

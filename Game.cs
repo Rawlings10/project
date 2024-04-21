@@ -81,8 +81,12 @@ namespace NarrativeProject
             Ammunation = amunation;
         }
         public static void AmmunationHP()
-        {           
+        {
+            Console.WriteLine();
+            Console.ForegroundColor = ConsoleColor.Magenta;
+            Console.WriteLine("Amunation Found!!!");
             SetAmmunation(Ammunation + 20);
+            Console.ResetColor();   
         }
 
         public static int GetAmor()
@@ -161,6 +165,13 @@ namespace NarrativeProject
                 {
                     case ConsoleKey.A:
                         PlayerAttack();
+                        if (enermyHp <= 0)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            Console.WriteLine("Enemy Defeated");
+                            Console.ResetColor();
+                            SetTimer(1000);
+                        }
                         SetTimer(1000);
                         EnemyAttack();
                         break;
@@ -172,14 +183,14 @@ namespace NarrativeProject
                     SetTimer(5000);
                     Game.Finish();
                 }
-                else if(enermyHp <= 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Blue;
-                    Console.WriteLine("Enemy Defeated");
-                    Console.ResetColor();
-                    SetTimer(1000);
-                }
-
+            }
+        }
+        public static void MutlipleFightScene(int EnemyNumber)
+        {
+            for (int i = 0; i <= EnemyNumber; i++)
+            {
+                FightScene();
+                Console.WriteLine("Another Enemy Incoming!!!");
             }
         }
         public static void EmptySpace()
