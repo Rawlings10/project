@@ -43,14 +43,11 @@ The door backward leads to the bedroom.";
                     break;
                 case ConsoleKey.RightArrow:
                     Game.FightScene();
-                    Console.WriteLine($"{Game.name}, Nothing found");
                     Game.SetTimer(500);
-                    Game.Transition<Basement>();
                     break;
                 case ConsoleKey.LeftArrow:
                     Console.WriteLine($"{Game.name}, Nothing found");
                     Game.SetTimer(500);
-                    Game.Transition<Basement>();
                     break;
                 case ConsoleKey.Tab:
                     Game.CheckInventory();

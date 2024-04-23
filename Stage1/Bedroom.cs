@@ -30,7 +30,8 @@ The door to your right to the bathroom.";
                     string code = Console.ReadLine();
                     if (code != "bonjour")
                     {
-                        Console.WriteLine("The door is locked.");
+                        Console.WriteLine("Wrong Keycode!!!");
+                        Game.SetTimer(1000);
                     }
                     else if(code == "bonjour")
                     {
@@ -54,10 +55,13 @@ The door to your right to the bathroom.";
                     switch (pickItems)
                     {
                         case "book":
+                            Console.Clear();
                             Console.WriteLine("you read the book and the it says");
                             Console.WriteLine();
                             Console.WriteLine();
+                            Console.ForegroundColor = ConsoleColor.DarkBlue;
                             Console.WriteLine("The Passward to the door is 'bonjour' \nThe passward to the basement door is 'salut' ");
+                            Console.ResetColor();   
                             Console.WriteLine();
                             Console.WriteLine();
                             Console.WriteLine("Any any key to close the book.........");

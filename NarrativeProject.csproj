@@ -56,7 +56,7 @@
     <Compile Include="Stage3\StoreHouse.cs" />
     <Compile Include="Stage4\Lab.cs" />
     <Compile Include="Stage4\Libary.cs" />
-    <Compile Include="Stage5\EndGame.cs" />
+    <Compile Include="END\EndGame.cs" />
     <Compile Include="Stage2\Corridor.cs" />
     <Compile Include="Stage1\Bedroom.cs" />
     <Compile Include="Rooms\Intro.cs" />

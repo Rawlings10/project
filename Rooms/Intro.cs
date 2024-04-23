@@ -1,4 +1,5 @@
 ﻿using NarrativeProject.Stage2;
+using NarrativeProject.Stage4;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,7 +45,7 @@ namespace NarrativeProject.Rooms
         $@"INTRO:
 {Game.name}, You wake up in a mysterious mansion with no memory of how you got there.
 As you explore, you realize the mansion is haunted with Monster.
-Your goal is to find a way to escape the hunted and escape the Monster..
+Your goal is to find a way to escape the hunted house and escape from the Monsters..
 
 First of all find a [weapon] around you for your safety. 
 GOODLUCK!!!

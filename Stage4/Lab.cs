@@ -1,4 +1,5 @@
-﻿using NarrativeProject.Stage4;
+﻿using NarrativeProject.Stage3;
+using NarrativeProject.Stage4;
 using System;
 
 namespace NarrativeProject.Rooms
@@ -33,7 +34,7 @@ go left for libary.";
                     break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You back to the Garage");
-                    Game.Transition<Libary>();
+                    Game.Transition<Garage>();
                     break;
                 case ConsoleKey.Tab:
                     Game.CheckInventory();

@@ -45,9 +45,10 @@ namespace NarrativeProject
                 game.ReceiveChoice(Console.ReadKey().Key);
                 Console.Clear();
             }
-
-            Console.WriteLine("END");
-            Console.ReadLine();
+            Console.Clear();
+            Console.ForegroundColor= ConsoleColor.Red;
+            Console.WriteLine("ELIMINATED");
+            Game.SetTimer(1000);
         }
     }
 }

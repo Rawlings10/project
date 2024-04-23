@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Media;
 using System.Security.Policy;
 using System.Runtime.InteropServices;
+using System.IO;
 
 namespace NarrativeProject
 {
@@ -37,7 +38,7 @@ namespace NarrativeProject
             {
                 SetAmmunation(Ammunation + 20);
             }
-            SetTimer(2000);
+            SetTimer(3000);
         }
         public static void CheckInventory()
         {
@@ -56,13 +57,11 @@ namespace NarrativeProject
         static string nextRoom = "";
         public static int PlayerHP = 100;
         public static string name;
-        public static int amorPower = 3;
         public static int Ammunation;
         public static int enermyHp = 15;
         internal static int enemyAttackDamage; 
         public static int PlayerAttackDamage;
         public static bool playerTurn = true;
-        public static bool isAmorUsed;
           
         public static int GetHp()
         {
@@ -90,14 +89,6 @@ namespace NarrativeProject
             Console.ResetColor();   
         }
 
-        public static int GetAmor()
-        {
-            return amorPower;
-        }
-        public static void SetAmor(int amor)
-        {
-            amorPower = amor;
-        }
         public static void PlayerAttack()
         {
             if (Ammunation > 0)
@@ -214,6 +205,13 @@ namespace NarrativeProject
             if (PlayerHP > 100)
             {
                 SetHp(PlayerHP = 100);  
+            }
+        }
+        public static void SaveGame()
+        {
+            if (!File.Exists("SaveGame.txt"));
+            {
+                File.Create("Save.txt");
             }
         }
 
