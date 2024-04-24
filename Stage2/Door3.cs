@@ -25,8 +25,8 @@ The door backward leads to the corridor.";
                     Game.HealthKit();
                     break;
                 case ConsoleKey.RightArrow:
-                    Game.FightScene();
                     Game.AddtoInventory(gameArtifact.gold); 
+                    Game.FightScene();
                     break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("Back to the corridor");

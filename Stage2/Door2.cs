@@ -14,6 +14,8 @@ namespace NarrativeProject.Stage2
 $@"{Game.name}, you Entered the second door.     [STAGE 2]
 
 MAP
+Foward has an ILUSSIONAL DOOR that can take you back to the different places
+but keep try to pass because it is the only way to the next STAGE
 Backward leads back to the corridor.";
         internal override void PlayerMove(ConsoleKey key)
         {
@@ -22,15 +24,10 @@ Backward leads back to the corridor.";
                 case ConsoleKey.UpArrow:
                     Random ilussion = new Random();
                     int ilussionalDoor = ilussion.Next(1, 4);
-                    if (ilussionalDoor == 0)
+                    if (ilussionalDoor == 1)
                     {
-                        Console.WriteLine("You find yourself in the Basement.");
-                        Game.Transition<Basement>();
-                    }
-                    else if (ilussionalDoor == 1)
-                    {
-                        Console.WriteLine("You find yourself in the Bedroom.");
-                        Game.Transition<Bedroom>();
+                        Console.WriteLine("You find yourself in the Door1.");
+                        Game.Transition<Door1>();
                     }
                     else if (ilussionalDoor == 2)
                     {
@@ -39,8 +36,12 @@ Backward leads back to the corridor.";
                     }
                     else if (ilussionalDoor == 3)
                     {
+                        Console.ForegroundColor = ConsoleColor.Green;
                         Console.WriteLine("You passed the Portal.");
+                        Game.SetTimer(1000);
+                        Console.ResetColor();
                         Game.Transition<Armory>();
+                        Game.SaveGame();
                     }
                     break;
                 case ConsoleKey.RightArrow:

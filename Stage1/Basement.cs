@@ -35,6 +35,7 @@ The door backward leads to the bedroom.";
                     {
                         Console.WriteLine("You open the door with the key and leave your bedroom.");
                         Game.Transition<Corridor>();
+                        Game.SaveGame();
                     }
                     break;
                 case ConsoleKey.DownArrow:
@@ -42,8 +43,7 @@ The door backward leads to the bedroom.";
                     Game.Transition<Bedroom>();
                     break;
                 case ConsoleKey.RightArrow:
-                    Game.FightScene();
-                    Game.SetTimer(500);
+                    Game.FightScene(15);
                     break;
                 case ConsoleKey.LeftArrow:
                     Console.WriteLine($"{Game.name}, Nothing found");

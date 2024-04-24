@@ -22,6 +22,7 @@ go forward next room.";
             {
                 case ConsoleKey.UpArrow:
                     Console.WriteLine("You entered the Store House");
+                    Game.SetTimer(1000);
                     Game.Transition<StoreHouse>();
                     break;
                 case ConsoleKey.LeftArrow:
@@ -35,6 +36,7 @@ go forward next room.";
                     break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You return to the ilusional door");
+                    Game.SetTimer(1000);
                     Game.Transition<Door2>();
                     break;
                 case ConsoleKey.Tab:
@@ -43,6 +45,7 @@ go forward next room.";
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
+                    Game.SetTimer(1000);
                     break;
             }
         }

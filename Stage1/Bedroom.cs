@@ -17,7 +17,10 @@ $@"{Game.name}, You are in a Bedroom    [STAGE 1]
 MAP
 The door to forward is the exit
 The door to your left to the basement
-The door to your right to the bathroom.";
+The door to your right to the bathroom.
+
+HINT
+go backward to get a GUN";
 
 
         internal override void PlayerMove(ConsoleKey key)
@@ -47,11 +50,12 @@ The door to your right to the bathroom.";
                     break;
                 case ConsoleKey.RightArrow:
                     Console.WriteLine($"{Game.name}, you entered the Bathroom.");
-                    Game.FightScene();
+                    Game.FightScene(15);
                     Game.Transition<Bathroom>();
                     break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine($"{Game.name}, you find a [book] [{gameArtifact.key}] and a [{gameArtifact.gun}] on the table");
+                    Console.WriteLine("Pick your choice by typing the name of the item");
                     string pickItems = Console.ReadLine();
                     switch (pickItems)
                     {

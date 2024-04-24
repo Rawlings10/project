@@ -20,15 +20,13 @@ backward leads back to the corridor.";
             switch (key)
             {
                 case ConsoleKey.UpArrow:
-                    Game.FightScene();
                     Game.EmptySpace();
                     break;
-                case ConsoleKey.RightArrow:
-                    Game.EmptySpace();
+                case ConsoleKey.RightArrow:                   
+                    Game.FightScene();
                     break;
                 case ConsoleKey.LeftArrow:
-                    Game.FightScene();  
-                    Game.EmptySpace();
+                    Game.FightScene();
                     break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You return to the corridor");

@@ -56,10 +56,10 @@ namespace NarrativeProject
         internal bool IsGameOver() => isFinished;
         static bool isFinished;
         static string nextRoom = "";
-        public static int PlayerHP = 11;
+        public static int PlayerHP = 100;
         public static string name;
         public static int Ammunation;
-        public static int enermyHp = 15;
+        public static int enermyHp;
         internal static int enemyAttackDamage; 
         public static int PlayerAttackDamage;
         public static bool playerTurn = true;
@@ -87,6 +87,7 @@ namespace NarrativeProject
             Console.ForegroundColor = ConsoleColor.Magenta;
             Console.WriteLine("Amunation Found!!!");
             SetAmmunation(Ammunation + 20);
+            SetTimer(1500);
             Console.ResetColor();   
         }
 
@@ -177,7 +178,7 @@ namespace NarrativeProject
         {
             Random hit = new Random();
             enemyAttackDamage = hit.Next(4, 10);
-            Console.WriteLine("Enermy turn");
+            Console.WriteLine("Enemy turn");
             SetTimer(500);
             PlayerHP -= enemyAttackDamage;
             Console.ForegroundColor = ConsoleColor.Red;
@@ -188,36 +189,46 @@ namespace NarrativeProject
             Console.WriteLine($"                                                                                                       Ammuntion:{Ammunation}");
             Console.ResetColor();
         }
-        public static void FightScene()
-        {
+        public static void FightScene(int enemy = 15)
+        { 
+            enermyHp = enemy; 
             ConsoleKey key;
-            Console.WriteLine("Enermy Spotted!!!");
+            Console.WriteLine("Enemy Spotted!!!");
+
             while (PlayerHP > 0 && enermyHp > 0)
-            {                
-                Console.WriteLine("Press A to Shot enemy");
+            {
+                Console.WriteLine("Press A to Shoot enemy");
                 key = Console.ReadKey().Key;
                 Console.Clear();
-                switch (key)
+
+                if (key == ConsoleKey.A)
                 {
-                    case ConsoleKey.A:
-                        PlayerAttack();
-                        if (enermyHp <= 0)
-                        {
-                            Console.ForegroundColor = ConsoleColor.Blue;
-                            Console.WriteLine("Enemy Defeated");
-                            Console.ResetColor();
-                            SetTimer(1000);
-                        }
+                    PlayerAttack();
+                    if (enermyHp <= 0)
+                    {
+                        Console.ForegroundColor = ConsoleColor.Blue;
+                        Console.WriteLine("Enemy Defeated");
+                        Console.ResetColor();
+                        SetTimer(1000);
+                    }
+                    else
+                    {
                         SetTimer(1000);
                         EnemyAttack();
-                        break;
+                    }
                 }
-                if(PlayerHP <= 0)
+                else
+                {
+                    break;
+                }
+
+                if (PlayerHP <= 0)
                 {
                     Console.Clear();
-                    Console.WriteLine("Opps!!! Eliminated");
+                    Console.WriteLine("Oops!!! Eliminated");
                     SetTimer(2000);
                     Game.Finish();
+                    break; 
                 }
             }
         }
@@ -226,7 +237,22 @@ namespace NarrativeProject
             for (int i = 0; i <= EnemyNumber; i++)
             {
                 FightScene();
-                Console.WriteLine("Another Enemy Incoming!!!");
+                Console.WriteLine();
+                if(i < EnemyNumber)
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine("ANOTHER ENEMY INCOMING!!!");
+                    SetTimer(500);
+                    Console.ResetColor();
+                }
+                else
+                {
+                    Console.ForegroundColor = ConsoleColor.DarkGreen;
+                    Console.WriteLine("AREA CLEAR");
+                    SetTimer(500);
+                    Console.ResetColor();
+                }
+                
             }
         }
         public static void EmptySpace()

@@ -62,10 +62,13 @@ presss [Tab] how to play";
                     Game.Transition<Bedroom>();
                     break;
                 case ConsoleKey.Tab:
+                    Console.WriteLine();
                     Console.WriteLine("1- Use the directional button for navigation to four courners of your location");
                     Console.WriteLine("2- When you find object type the name of the object to pick them up");
                     Console.WriteLine("3- Press Tab at any time to check your inventory");
                     Console.WriteLine("4- When you see [map] it only shows the current exit point of your location, \nbut you can navigate around the room freely as you want");
+                    Console.WriteLine("5- When enemy is spotted Press A to shot");
+                    Console.WriteLine("6- When out of armor in fight press any key to run from enemy");
                     Console.WriteLine();
                     Console.WriteLine();
                     Console.ForegroundColor= ConsoleColor.Red;

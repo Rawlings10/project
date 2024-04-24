@@ -22,6 +22,7 @@ go forward next room.";
             {
                 case ConsoleKey.UpArrow:
                     Console.WriteLine("You Entered the Garage");
+                    Game.SetTimer(1000);
                     Game.Transition<Garage>();
                     break;
                 case ConsoleKey.LeftArrow:
@@ -33,6 +34,7 @@ go forward next room.";
                     break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You return to the Armory");
+                    Game.SetTimer(1000);
                     Game.Transition<Armory>();
                     break;
                 case ConsoleKey.Tab:
@@ -41,6 +43,7 @@ go forward next room.";
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
+                    Game.SetTimer(1000);
                     break;
             }
         }

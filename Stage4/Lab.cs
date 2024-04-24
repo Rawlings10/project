@@ -12,7 +12,7 @@ namespace NarrativeProject.Rooms
 $@"{Game.name}, You are in a Lab    [STAGE 4] 
 
 MAP
-go left for libary.";
+go right for next room.";
 
 
         internal override void PlayerMove(ConsoleKey key)
@@ -26,14 +26,17 @@ go left for libary.";
                     break;
                 case ConsoleKey.LeftArrow:
                     Game.MutlipleFightScene(2);
+                    Game.HealthKit();
                     break;
                 case ConsoleKey.RightArrow:
                     Game.MutlipleFightScene(2);
                     Console.WriteLine("You entered the Libary");
+                    Game.SetTimer(1000);
                     Game.Transition<Libary>();
                     break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You back to the Garage");
+                    Game.SetTimer(1000);
                     Game.Transition<Garage>();
                     break;
                 case ConsoleKey.Tab:
@@ -42,6 +45,7 @@ go left for libary.";
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
+                    Game.SetTimer(1000);
                     break;
             }
         }

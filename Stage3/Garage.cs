@@ -23,7 +23,9 @@ go forward next room.";
                 case ConsoleKey.UpArrow:
                     Game.MutlipleFightScene(2);
                     Console.WriteLine("You entered the Lab");
+                    Game.SetTimer(1000);
                     Game.Transition<Lab>();
+                    Game.SaveGame();
                     break;
                 case ConsoleKey.LeftArrow:
                     Game.AmmunationHP();
@@ -34,6 +36,7 @@ go forward next room.";
                     break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You return to the Store House");
+                    Game.SetTimer(1000);
                     Game.Transition<StoreHouse>();
                     break;
                 case ConsoleKey.Tab:
@@ -42,6 +45,7 @@ go forward next room.";
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
+                    Game.SetTimer(1000);
                     break;
             }
         }

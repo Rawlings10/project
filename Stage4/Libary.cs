@@ -36,6 +36,7 @@ namespace NarrativeProject.Stage4
                 Game.SetTimer(1000);
                 Console.Beep();
                 Game.Transition<EndGame>();
+                Game.SaveGame();
             }
             else 
             {
@@ -92,7 +93,7 @@ go forward for EXIT.";
                     Console.ReadKey();
                     break;
                 case ConsoleKey.DownArrow:
-                    Console.WriteLine("You back to the Garage");
+                    Console.WriteLine($"Opps.....{Game.name}, you cant go back at this time, Finish the game.");
                     Game.Transition<Libary>();
                     break;
                 case ConsoleKey.Tab:
@@ -101,6 +102,7 @@ go forward for EXIT.";
                     break;
                 default:
                     Console.WriteLine("Invalid command.");
+                    Game.SetTimer(1000);
                     break;
             }
         }
