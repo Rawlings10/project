@@ -288,8 +288,6 @@ namespace NarrativeProject
                 writer.WriteLine(name);
                 writer.WriteLine(PlayerHP);
                 writer.WriteLine(Ammunation);
-                //string inventoryJson = JsonSerializer.Serialize(Inventory);
-                //writer.WriteLine(inventoryJson);
             }
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Game Saved Successfully");
@@ -315,8 +313,7 @@ namespace NarrativeProject
                             PlayerHP = playerHP;
                             Ammunation = ammunition;
 
-                            // Deserialize the inventory list from JSON
-                            //Inventory = JsonSerializer.Deserialize<List<string>>(inventoryJson);
+                           
 
                             Console.ForegroundColor = ConsoleColor.Green;
                             Console.WriteLine("Game loaded successfully.");

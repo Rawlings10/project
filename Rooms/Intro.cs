@@ -51,7 +51,9 @@ First of all find a [weapon] around you for your safety.
 GOODLUCK!!!
 
 press [Enter] button to Proceed.
-presss [Tab] how to play";
+press [Tab] how to play
+press [space bar] to load game"            ;
+
         
         internal override void PlayerMove(ConsoleKey key)
         {
@@ -60,6 +62,9 @@ presss [Tab] how to play";
             {
                 case ConsoleKey.Enter:
                     Game.Transition<Bedroom>();
+                    break;
+                case ConsoleKey.Spacebar : 
+                    Game.LoadGame(); 
                     break;
                 case ConsoleKey.Tab:
                     Console.WriteLine();
