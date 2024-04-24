@@ -37,17 +37,15 @@ namespace NarrativeProject
             {
                 Console.WriteLine("--");
                 Console.ForegroundColor = ConsoleColor.Green;
-                Console.WriteLine($"                                                                                                 Player: {Game.name}");
-                Console.WriteLine($"                                                                                                     HP: {Game.PlayerHP}");
-                Console.WriteLine($"                                                                                                 Weapon: {Game.Ammunation}");
+                Game.DetailsBoard();
                 Console.ResetColor();
                 Console.WriteLine(game.CurrentRoomDescription);
                 game.ReceiveChoice(Console.ReadKey().Key);
                 Console.Clear();
             }
             Console.Clear();
-            Console.ForegroundColor= ConsoleColor.Red;
-            Console.WriteLine("ELIMINATED");
+            Console.ForegroundColor= ConsoleColor.Yellow;
+            Console.WriteLine("THE END");
             Game.SetTimer(1000);
         }
     }

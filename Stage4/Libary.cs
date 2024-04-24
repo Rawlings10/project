@@ -27,10 +27,15 @@ namespace NarrativeProject.Stage4
             }
             if (keycode[0, 0] == '@' && keycode[0, 1] == '#' && keycode[1, 0] == '$' && keycode[1, 1] == '%')
             {
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.Blue;
                 Console.WriteLine($"[{keycode[0, 0]}][{keycode[0, 1]}]");
                 Console.WriteLine($"[{keycode[1, 0]}][{keycode[1, 1]}]");
+                Console.ResetColor();
                 gate = true;
                 Game.SetTimer(1000);
+                Console.Beep();
+                Game.Transition<EndGame>();
             }
             else 
             {
@@ -55,25 +60,36 @@ go forward for EXIT.";
                 case ConsoleKey.UpArrow:
                     Console.WriteLine("What is the Password [****]");
                     EndGamePassword();
-                    if (gate = true)
-                    {
-                        Console.ForegroundColor = ConsoleColor.Green;
-                        Console.WriteLine("gate OPen");
-                        Game.SetTimer(2000);
-                        Console.ResetColor();
-                        Game.Transition<EndGame>();
-                    }
-                    else
-                    {
-                        Console.WriteLine("Wrong Password");
-                        Game.SetTimer(500);
-                    }
                     break;
                 case ConsoleKey.LeftArrow:
-                    
+                    Console.WriteLine("You see the first book");
+                    Game.SetTimer(1000);
+                    Console.Clear();
+                    Console.WriteLine("you read the book and the it says");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.WriteLine("The first symbol to the gate is '@' \nThe second symbol is gate '#' ");
+                    Console.ResetColor();
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("Any any key to close the book.........");
+                    Console.ReadKey();
                     break;
                 case ConsoleKey.RightArrow:
-                    
+                    Console.WriteLine("You see the second book");
+                    Game.SetTimer(1000);
+                    Console.Clear();
+                    Console.WriteLine("you read the book and the it says");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
+                    Console.WriteLine("The third symbol to the gate is '$' \nThe second symbol is gate '%' ");
+                    Console.ResetColor();
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.WriteLine("Any any key to close the book.........");
+                    Console.ReadKey();
                     break;
                 case ConsoleKey.DownArrow:
                     Console.WriteLine("You back to the Garage");

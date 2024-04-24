@@ -6,6 +6,7 @@ using System.Media;
 using System.Security.Policy;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Text;
 
 namespace NarrativeProject
 {
@@ -55,7 +56,7 @@ namespace NarrativeProject
         internal bool IsGameOver() => isFinished;
         static bool isFinished;
         static string nextRoom = "";
-        public static int PlayerHP = 100;
+        public static int PlayerHP = 11;
         public static string name;
         public static int Ammunation;
         public static int enermyHp = 15;
@@ -87,6 +88,49 @@ namespace NarrativeProject
             Console.WriteLine("Amunation Found!!!");
             SetAmmunation(Ammunation + 20);
             Console.ResetColor();   
+        }
+
+        public static void DetailsBoard()
+        {
+            Console.WriteLine($"                                                                                                 Player: {Game.name}");
+            if (PlayerHP > 50)
+            {
+                Console.ForegroundColor= ConsoleColor.Green;
+                Console.WriteLine($"                                                                                                     HP: {Game.PlayerHP}");
+                Console.ResetColor();
+            }
+            else if(PlayerHP > 20)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"                                                                                                     HP: {Game.PlayerHP}");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"                                                                                                     HP: {Game.PlayerHP}");
+                Console.ResetColor();
+            }
+
+            if (Ammunation > 30)
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"                                                                                                     HP: {Game.Ammunation}");
+                Console.ResetColor();
+            }
+            else if (Ammunation > 15)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine($"                                                                                                     HP: {Game.Ammunation}");
+                Console.ResetColor();
+            }
+            else
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"                                                                                                     HP: {Game.Ammunation}");
+                Console.ResetColor();
+            }
+            
         }
 
         public static void PlayerAttack()
@@ -172,7 +216,7 @@ namespace NarrativeProject
                 {
                     Console.Clear();
                     Console.WriteLine("Opps!!! Eliminated");
-                    SetTimer(5000);
+                    SetTimer(2000);
                     Game.Finish();
                 }
             }
@@ -209,9 +253,63 @@ namespace NarrativeProject
         }
         public static void SaveGame()
         {
-            if (!File.Exists("SaveGame.txt"));
+            if (!File.Exists("SaveGame.txt"))
             {
-                File.Create("Save.txt");
+                File.Create("SaveGame.txt");
+            }
+            using (StreamWriter writer = new StreamWriter("SaveGame.txt"))
+            {
+                writer.WriteLine(name);
+                writer.WriteLine(PlayerHP);
+                writer.WriteLine(Ammunation);
+                //string inventoryJson = JsonSerializer.Serialize(Inventory);
+                //writer.WriteLine(inventoryJson);
+            }
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("Game Saved Successfully");
+            Console.ResetColor();
+            SetTimer(2000);
+        }
+
+        public static void LoadGame()
+        {
+            if (File.Exists("SaveGame.txt"))
+            {
+                try
+                {
+                    using (StreamReader reader = new StreamReader("SaveGame.txt"))
+                    {
+                        name = reader.ReadLine();
+                        string playerHPString = reader.ReadLine();
+                        string ammunitionString = reader.ReadLine();
+                        string inventoryJson = reader.ReadLine();
+
+                        if (int.TryParse(playerHPString, out int playerHP) && int.TryParse(ammunitionString, out int ammunition))
+                        {
+                            PlayerHP = playerHP;
+                            Ammunation = ammunition;
+
+                            // Deserialize the inventory list from JSON
+                            //Inventory = JsonSerializer.Deserialize<List<string>>(inventoryJson);
+
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine("Game loaded successfully.");
+                            Console.ResetColor();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Error: Invalid data format in the save file.");
+                        }
+                    }
+                }
+                catch (IOException ex)
+                {
+                    Console.WriteLine($"Error loading game: {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine("No save game found.");
             }
         }
 

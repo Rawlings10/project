@@ -38,6 +38,7 @@ The door to your right to the bathroom.";
                         Console.WriteLine($"{Game.name}, you open the door with the key and leave the bedroom.");
 
                         Game.Transition<Corridor>();
+                        Game.SaveGame();
                     }
                     break;
                 case ConsoleKey.LeftArrow:
@@ -60,7 +61,7 @@ The door to your right to the bathroom.";
                             Console.WriteLine();
                             Console.WriteLine();
                             Console.ForegroundColor = ConsoleColor.DarkBlue;
-                            Console.WriteLine("The Passward to the door is 'bonjour' \nThe passward to the basement door is 'salut' ");
+                            Console.WriteLine("The Password to the door is 'bonjour' \nThe password to the basement door is 'salut' ");
                             Console.ResetColor();   
                             Console.WriteLine();
                             Console.WriteLine();

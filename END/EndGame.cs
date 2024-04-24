@@ -10,13 +10,20 @@ namespace NarrativeProject.Rooms
     {
         public EndGame() { }
 
-        internal override string CreateDescription()
-        {
-            throw new NotImplementedException();
-        }
+        internal override string CreateDescription() =>
+        $@"{Game.name}
+CONGRATULATIONS, YOU FINISH THE GAME
+
+
+
+
+
+Press any key to exit
+" ;
         internal override void PlayerMove(ConsoleKey key)
         {
-            throw new NotImplementedException();
+            Console.ReadKey();
+            Game.Finish();
         }
     }
 }
