@@ -6,6 +6,8 @@ using System.Media;
 using System.Security.Policy;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
 
 namespace NarrativeProject
@@ -17,7 +19,7 @@ namespace NarrativeProject
         gold,
         silver
     }
-
+    [Serializable]
     public class Game
     {
         public static List<gameArtifact> Inventory { get; private set; }
@@ -39,7 +41,7 @@ namespace NarrativeProject
             {
                 SetAmmunation(Ammunation + 20);
             }
-            SetTimer(3000);
+            SetTimer(1500);
         }
         public static void CheckInventory()
         {
@@ -51,8 +53,8 @@ namespace NarrativeProject
             Game.SetTimer(1000);
         }
 
-        List<Room> rooms = new List<Room>();
-        Room currentRoom;
+        private static List<Room> rooms = new List<Room>();
+        private static Room currentRoom;
         internal bool IsGameOver() => isFinished;
         static bool isFinished;
         static string nextRoom = "";
@@ -170,7 +172,8 @@ namespace NarrativeProject
                 }
             }
             else if (Ammunation <= 0)
-            {           
+            {
+                SetAmmunation(Ammunation = 0);
                 Console.WriteLine("OPPS, out of ammunation!!!");
             }
         }
@@ -289,6 +292,12 @@ namespace NarrativeProject
                 writer.WriteLine(PlayerHP);
                 writer.WriteLine(Ammunation);
             }
+            using (FileStream fileStream = new FileStream("SaveGame.txt", FileMode.Open))
+            {
+                BinaryFormatter binaryFormatter = new BinaryFormatter();
+                binaryFormatter.Serialize(fileStream, currentRoom);
+            }
+
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("Game Saved Successfully");
             Console.ResetColor();
@@ -323,6 +332,11 @@ namespace NarrativeProject
                         {
                             Console.WriteLine("Error: Invalid data format in the save file.");
                         }
+                    }
+                    using (FileStream fileStream = new FileStream("SaveGame.txt", FileMode.Open))
+                    {
+                        BinaryFormatter binaryFormatter = new BinaryFormatter();
+                        currentRoom = (Room)binaryFormatter.Deserialize(fileStream);
                     }
                 }
                 catch (IOException ex)

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace NarrativeProject.Stage4
 {
+    [Serializable]
     internal class Libary : Room
     {
         private static char[,] keycode;

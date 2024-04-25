@@ -3,6 +3,7 @@ using System;
 
 namespace NarrativeProject.Rooms
 {
+    [Serializable]
     internal class Corridor : Room
     {
         private int damage;

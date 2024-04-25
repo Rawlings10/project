@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace NarrativeProject.Rooms
 {
+    [Serializable]
     internal class Armory : Room 
     {
         internal override string CreateDescription() =>

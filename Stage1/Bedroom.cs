@@ -7,6 +7,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace NarrativeProject.Rooms
 {
+    [Serializable]
     internal class Bedroom : Room 
     {
         Game artifact = new Game();

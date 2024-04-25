@@ -7,6 +7,7 @@ using System;
 
 namespace NarrativeProject
 {
+    [Serializable]
     internal class Program
     {
         static void Main(string[] args)

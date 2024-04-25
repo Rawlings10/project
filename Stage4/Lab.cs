@@ -4,6 +4,7 @@ using System;
 
 namespace NarrativeProject.Rooms
 {
+    [Serializable]
     internal class Lab : Room
     {
         internal static bool isKeyCollected;

@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace NarrativeProject.Stage3
 {
+    [Serializable]
     internal class Garage : Room
     {
         internal override string CreateDescription() =>
