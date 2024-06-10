@@ -10,7 +10,7 @@ namespace NarrativeProject.Rooms
     [Serializable]
     internal class Bedroom : Room 
     {
-        Game artifact = new Game();
+        //Game artifact = new Game();
                  
         internal override string CreateDescription() =>
 $@"{Game.name}, You are in a Bedroom    [STAGE 1]
